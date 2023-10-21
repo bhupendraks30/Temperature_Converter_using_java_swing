@@ -1,0 +1,135 @@
+package tempreture_Converter;
+
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ChooseClass extends JPanel implements ActionListener,ItemListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel l ;
+	private JRadioButton fc;
+	private JRadioButton cf;
+	private JButton b;
+	private ButtonGroup g;
+	private JLabel f = new JLabel();
+	private JLabel c = new JLabel();
+	private JButton con = new JButton("Convert");
+	private JButton clr = new JButton("Clear");
+	private JButton back = new JButton("Back");
+	private JTextField tf = new JTextField();
+	private JTextField tc = new JTextField();
+	
+	
+	void setBounds() {
+		l.setBounds(150,100,250,30);
+		fc.setBounds(170,150,250,30);
+		cf.setBounds(170,190,250,30);
+		b.setBounds(220,300,100,35);
+		
+		f.setBounds(100,100,200,30);
+		tf.setBounds(320,100,100,30);
+		
+		c.setBounds(100,250,200,30);
+		tc.setBounds(320,250,100,30);
+		
+		con.setBounds(300,180,100,30);
+		clr.setBounds(410,180,100,30);
+		back.setBounds(50,380,100,30);
+		
+		
+		
+	}
+	
+	void F_To_C() {
+		f.setText("Enter the Fahrenheit :");
+		c.setText("The Celsius Value is :");
+		
+		con.setFocusable(false);
+		clr.setFocusable(false);
+		back.setFocusable(false);	
+		
+		setBounds();		
+		tc.setEditable(false);
+		
+		add(f);add(c);add(con);
+		add(back);add(clr);add(tf);add(tc);
+	}
+	
+	void C_To_F() {
+		f.setText("Enter the Celsius :");
+		c.setText("The Fahrenheit Value is :");
+		
+		con.setFocusable(false);
+		clr.setFocusable(false);
+		back.setFocusable(false);	
+		
+		tf.setEditable(false);
+		setBounds();		
+		
+		
+		add(f);add(c);add(con);
+		add(back);add(clr);add(tf);add(tc);
+	}
+	
+	void setFont() {
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		fc.setFont(new Font("Segoe UI",Font.BOLD,18));
+		cf.setFont(new Font("Segoe UI",Font.BOLD,18));	
+		fc.setBackground(new Color(20,150,100));
+		cf.setBackground(new Color(20,150,100));
+		fc.setForeground(Color.WHITE);
+		cf.setForeground(Color.WHITE);
+		l.setForeground(Color.WHITE);
+	}
+	
+	void setInvisible() {
+		l.setVisible(false);
+		b.setVisible(false);
+		fc.setVisible(false);
+		cf.setVisible(false);
+	}
+
+	ChooseClass(){
+		setLayout(null);
+		setBackground(new Color(20,150,100));
+		l = new JLabel("What do you want ? :");
+		fc = new JRadioButton("Fahrenheit To Celsius");
+		cf = new JRadioButton("Celsius To Fahrenheit");
+		b = new JButton("SUBMIT");
+		g = new ButtonGroup();
+		
+		setBounds();
+		setFont();
+		b.setFocusable(false);	
+		b.addActionListener(this);
+		b.setEnabled(false);
+		fc.addItemListener(this);
+		cf.addItemListener(this);
+		
+		
+		g.add(fc);
+		g.add(cf);
+		add(l);		
+		add(fc);
+		add(cf);
+		add(b);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub		
+		setInvisible();
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		if(cf.isSelected() || fc.isSelected()) {
+			b.setEnabled(true);
+		}
+	}
+}

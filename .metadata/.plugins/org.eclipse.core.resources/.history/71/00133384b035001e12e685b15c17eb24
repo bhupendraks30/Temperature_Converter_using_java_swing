@@ -1,0 +1,129 @@
+package tempreture_Converter;
+
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ChooseClass extends JPanel implements ActionListener,ItemListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel l ;
+	public JRadioButton fc;
+	public JRadioButton cf;
+	private JButton b;
+	private ButtonGroup g;
+	private Convert_FC c;
+	private Convert_CF c1;
+	private JButton back;
+	
+	
+	
+	void setBounds() {
+		l.setBounds(150,100,250,30);
+		fc.setBounds(170,150,250,30);
+		cf.setBounds(170,190,250,30);
+		b.setBounds(220,300,100,35);
+		
+			
+	}
+	
+	void setFont() {
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		fc.setFont(new Font("Segoe UI",Font.BOLD,18));
+		cf.setFont(new Font("Segoe UI",Font.BOLD,18));	
+		fc.setBackground(new Color(20,150,100));
+		cf.setBackground(new Color(20,150,100));
+		fc.setForeground(Color.WHITE);
+		cf.setForeground(Color.WHITE);
+		l.setForeground(Color.WHITE);
+	}
+	
+	void setInvisible() {
+		l.setVisible(false);
+		b.setVisible(false);
+		fc.setVisible(false);
+		cf.setVisible(false);
+	}
+	void setVisible() {
+		l.setVisible(true);
+		b.setVisible(true);
+		fc.setVisible(true);
+		cf.setVisible(true);
+	}
+
+	ChooseClass(){
+		setLayout(null);
+		setBackground(new Color(20,150,100));
+		l = new JLabel("What do you want ? :");
+		fc = new JRadioButton("Fahrenheit To Celsius");
+		cf = new JRadioButton("Celsius To Fahrenheit");
+		b = new JButton("SUBMIT");
+		g = new ButtonGroup();
+		back = new JButton("Back");
+		
+		c1=new Convert_CF();
+		c1.setVisible(false);
+		c1.setBounds(0,0,550,550);
+		
+		c = new Convert_FC();
+		c.setVisible(false);
+		c.setBounds(0,0,550,550);
+		
+		
+		setBounds();
+		setFont();
+		back.setFocusable(false);
+		back.setVisible(false);
+		b.setFocusable(false);	
+		b.addActionListener(this);
+		b.setEnabled(false);
+		fc.addItemListener(this);
+		cf.addItemListener(this);
+		back.addActionListener(this);
+		
+		
+		g.add(fc);
+		g.add(cf);
+		add(l);		
+		add(fc);
+		add(cf);
+		add(b);
+		add(c);
+		add(c1);
+		add(back);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub	
+		if(b==e.getSource()) {
+		setInvisible();
+		if(cf.isSelected()) {
+			c1.setVisible(true);
+			c1.C_To_F();
+			back.setVisible(true);
+			back.setBounds(50,390,100,30);
+		}else {
+			c.setVisible(true);	
+			c.F_To_C();	
+			back.setVisible(true);
+			back.setBounds(50,390,100,30);
+		}	
+		}
+		if(back==e.getSource()) {
+			System.out.println("Hellow");
+		}
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		if(cf.isSelected() || fc.isSelected()) {
+			b.setEnabled(true);
+		}
+	}
+}

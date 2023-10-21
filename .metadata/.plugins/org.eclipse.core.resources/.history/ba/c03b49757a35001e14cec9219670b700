@@ -1,0 +1,13 @@
+package tempreture_Converter;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.*;
+
+public class ChooseClass extends JPanel {
+	ChooseClass(){
+		setBounds(450,100,550,550);;
+		setLayout(null);
+	}
+}

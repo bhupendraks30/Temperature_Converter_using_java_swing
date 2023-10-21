@@ -1,0 +1,28 @@
+package tempreture_Converter;
+
+import javax.swing.*;
+
+public class MainClass extends JFrame {
+	private JButton b;
+	private JLabel l;
+	MainClass(){
+		setBounds(100,100,550,550);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		setResizable(false);
+		
+		b=new JButton("Enter");
+		l=new JLabel("Wellcome to Tempreture Converter.");
+
+		b.setBounds(200,300,100,35);
+		l.setBounds(100,100,250,20);
+		
+		setVisible(true);
+		add(b);
+		add(l);
+	}
+	public static void main(String[] args) {
+		new MainClass();
+	}
+
+}

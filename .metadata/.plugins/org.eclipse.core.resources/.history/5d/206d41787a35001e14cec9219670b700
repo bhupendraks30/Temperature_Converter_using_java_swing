@@ -1,0 +1,29 @@
+package tempreture_Converter;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.*;
+
+public class ChooseClass extends JPanel {
+	ChooseClass(){
+		setBounds(450,100,550,550);;
+		setLayout(null);
+		
+		
+		JButton b=new JButton("ENTER");
+		JLabel l =new JLabel("Wellcome to Tempreture Converter.");
+
+		b.setBounds(220,300,100,35);		
+		l.setBounds(100,200,350,20);
+		
+		
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		b.setFocusable(false);
+		
+		
+		setVisible(true);
+		add(b);
+		add(l);
+	}
+}

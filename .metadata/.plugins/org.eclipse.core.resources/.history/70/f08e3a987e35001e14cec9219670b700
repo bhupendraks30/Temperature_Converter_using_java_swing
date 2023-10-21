@@ -1,0 +1,27 @@
+package tempreture_Converter;
+
+
+import java.awt.*;
+import javax.swing.*;
+
+public class ChooseClass extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel l ;
+	private JRadioButton fc;
+	private JRadioButton cf;
+	
+	void setBounds() {
+		
+	}
+
+	ChooseClass(){
+		setBackground(new Color(20,150,100));
+		l = new JLabel();
+		fc = new JRadioButton("Fahrenheit To Celsius");
+		cf = new JRadioButton("Celsius To Fahrenheit");
+		
+	}
+}

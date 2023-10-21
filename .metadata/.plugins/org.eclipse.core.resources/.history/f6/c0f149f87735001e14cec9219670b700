@@ -1,0 +1,36 @@
+package tempreture_Converter;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class MainClass extends JFrame {
+	private JButton b;
+	private JLabel l;
+	private Container c;
+	MainClass(){
+		setBounds(500,100,550,550);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		setResizable(false);
+		c =getContentPane();
+		
+		b=new JButton("ENTER");
+		l=new JLabel("Wellcome to Tempreture Converter.");
+
+		b.setBounds(200,300,100,35);
+		b.setFocusable(false);
+		
+		l.setBounds(100,200,350,20);
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		
+		
+		setVisible(true);
+		add(b);
+		add(l);
+	}
+	public static void main(String[] args) {
+		new MainClass();
+	}
+
+}

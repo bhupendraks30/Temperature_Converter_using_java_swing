@@ -1,0 +1,68 @@
+package tempreture_Converter;
+
+import java.awt.Color;
+import java.awt.event.*;
+
+import javax.swing.*;
+public class Convert_FC extends JPanel implements ActionListener{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel f = new JLabel();
+	private JLabel c = new JLabel();
+	private JButton con = new JButton("Convert");
+	private JButton clr = new JButton("Clear");
+	private JTextField tf = new JTextField();
+	private JTextField tc = new JTextField();
+	
+	double convert_FC(double f) {
+		double c;
+		c = (f-32)*(5/9);
+		return c;
+	}
+	
+	void setBounds() {
+		f.setBounds(100,100,200,30);
+		tf.setBounds(320,100,100,30);
+		
+		c.setBounds(100,250,200,30);
+		tc.setBounds(320,250,100,30);
+		
+		con.setBounds(300,180,100,30);
+		clr.setBounds(410,180,100,30);	
+	}
+	
+	void F_To_C() {
+		setLayout(null);
+		setBackground(new Color(20,150,100));
+		f.setText("Enter the Fahrenheit :");
+		c.setText("The Celsius Value is :");
+		
+		
+		
+		con.setFocusable(false);
+		clr.setFocusable(false);
+		
+		setBounds();		
+		tc.setEditable(false);
+		
+		con.addActionListener(this);
+		clr.addActionListener(this);
+		
+		add(f);add(c);add(con);
+		add(clr);add(tf);add(tc);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(con==e.getSource()) {
+			
+		}
+		if(clr==e.getSource()) {
+			
+		}
+	}
+
+}

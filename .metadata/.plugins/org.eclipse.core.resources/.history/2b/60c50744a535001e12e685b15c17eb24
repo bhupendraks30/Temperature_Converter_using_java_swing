@@ -1,0 +1,104 @@
+package tempreture_Converter;
+
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ChooseClass extends JPanel implements ActionListener,ItemListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel l ;
+	public JRadioButton fc;
+	public JRadioButton cf;
+	private JButton b;
+	private ButtonGroup g;
+	private Converter c;
+	private JButton back = new JButton("Back");
+	
+	
+	void setBounds() {
+		l.setBounds(150,100,250,30);
+		fc.setBounds(170,150,250,30);
+		cf.setBounds(170,190,250,30);
+		b.setBounds(220,300,100,35);	
+		back.setBounds(50,380,100,30);	
+	}
+	
+	void setFont() {
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		fc.setFont(new Font("Segoe UI",Font.BOLD,18));
+		cf.setFont(new Font("Segoe UI",Font.BOLD,18));	
+		fc.setBackground(new Color(20,150,100));
+		cf.setBackground(new Color(20,150,100));
+		fc.setForeground(Color.WHITE);
+		cf.setForeground(Color.WHITE);
+		l.setForeground(Color.WHITE);
+	}
+	
+	void setInvisible() {
+		l.setVisible(false);
+		b.setVisible(false);
+		fc.setVisible(false);
+		cf.setVisible(false);
+	}
+
+	ChooseClass(){
+		setLayout(null);
+		setBackground(new Color(20,150,100));
+		l = new JLabel("What do you want ? :");
+		fc = new JRadioButton("Fahrenheit To Celsius");
+		cf = new JRadioButton("Celsius To Fahrenheit");
+		b = new JButton("SUBMIT");
+		g = new ButtonGroup();
+		c = new Converter();
+		c.setVisible(false);
+		c.setBounds(0,0,550,550);
+		
+		back.setVisible(false);
+		back.setFocusable(false);
+		
+		setBounds();
+		setFont();
+		b.setFocusable(false);	
+		b.addActionListener(this);
+		b.setEnabled(false);
+		fc.addItemListener(this);
+		cf.addItemListener(this);
+		
+		
+		g.add(fc);
+		g.add(cf);
+		add(l);		
+		add(fc);
+		add(cf);
+		add(b);
+		add(c);
+		add(back);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub		
+		setInvisible();
+		if(cf.isSelected()) {
+			c.setVisible(true);
+			back.setVisible(true);
+			c.C_To_F();
+		}else {
+			c.setVisible(true);		
+			back.setVisible(true);
+			c.F_To_C();
+		}
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		if(cf.isSelected() || fc.isSelected()) {
+			b.setEnabled(true);
+		}
+	}
+}

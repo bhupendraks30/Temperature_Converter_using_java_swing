@@ -1,0 +1,56 @@
+package tempreture_Converter;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MainClass extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton b;
+	private JLabel l;
+	private Container c;
+	private ChooseClass a;
+	MainClass(){
+		setBounds(450,100,550,550);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		setResizable(false);
+		c =getContentPane();
+		
+//		a= new ChooseClass();
+//		a.setVisible(false);
+//		a.setBounds(0,0,550,550);
+		
+		
+		b=new JButton("ENTER");
+		l=new JLabel("Wellcome to Tempreture Converter.");
+
+		b.setBounds(220,300,100,35);		
+		l.setBounds(100,200,350,20);
+		
+		
+		l.setFont(new Font("Segoe UI",Font.BOLD,20));
+		b.setFocusable(false);
+		b.addActionListener(this);
+		
+		c.setBackground(new Color(20,150,200));
+		
+		setVisible(true);
+		add(b);
+		add(l);
+		
+	}
+	public static void main(String[] args) {
+		new MainClass();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		b.setVisible(false);
+		l.setVisible(false);
+	}
+
+}

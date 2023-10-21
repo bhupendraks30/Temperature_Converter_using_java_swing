@@ -1,0 +1,109 @@
+package tempreture_Converter;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MainClass extends JFrame implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton b;
+	private JLabel l;
+	private Container c;
+	private JMenuBar mb;
+	private  JMenu conC,conK,conF;
+	private JMenuItem cf,ck,fc,fk,kc,kf;
+	private Convert_FC ftc;
+	private Convert_CF ctf;
+	
+	void convert_FC() {
+		ftc = new Convert_FC();
+		ftc.setBounds(0,0,550,450);
+		ftc.F_To_C();
+		ftc.setVisible(true);
+		add(ftc);
+	}
+	
+	void convert_CF() {
+		ctf = new Convert_CF();
+		ctf.setBounds(0,0,550,450);
+		ctf.C_To_F();
+		ctf.setVisible(true);
+		add(ctf);
+	}
+	
+	void setMenu() {
+		mb = new JMenuBar();
+		mb.setBackground(new Color(220,220,220));		
+		conC = new JMenu("Convert Celsius");
+		conF = new JMenu("Convert Fahrenheit");
+		conK = new JMenu("Convert Kalvin");		
+		cf = new JMenuItem("Celsius To Fahrenheit");
+		ck = new JMenuItem("Celsius To Kalvin");
+		fk = new JMenuItem("Fahrenheit To Kalvin");
+		fc = new JMenuItem("Fahrenheit To Celsius");
+		kc = new JMenuItem("Kalvin To Celsius");
+		kf = new JMenuItem("Kalvin To Fahrenheit");		
+		conC.add(cf);conC.add(ck);
+		conF.add(fc);conF.add(fk);
+		conK.add(kc);conK.add(kf);		
+		mb.add(conC);
+		mb.add(conF);
+		mb.add(conK);
+		setJMenuBar(mb);
+		addActionListenerMethod();
+	}
+	void addActionListenerMethod() {
+		cf.addActionListener(this);
+		ck.addActionListener(this);
+		fk.addActionListener(this);
+		fc.addActionListener(this);
+		kc.addActionListener(this);
+		kf.addActionListener(this);
+	}
+	MainClass(){
+		setBounds(450,100,550,550);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Tempreture Converter ");
+		setLayout(null);
+		setResizable(false);
+		c =getContentPane();
+		c.setBackground(new Color(20,150,100));		
+				
+		b=new JButton("START");
+		b.setBounds(220,300,100,35);
+		b.setFocusable(false);
+		b.addActionListener(this);
+		
+		l=new JLabel("Wellcome to Tempreture Converter.");
+		l.setForeground(Color.WHITE);						
+		l.setBounds(100,200,350,20);		
+		l.setFont(new Font("Segoe UI",Font.PLAIN,20));	
+		
+		add(b);
+		add(l);
+	}
+	public static void main(String[] args) {
+		new MainClass();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(b==e.getSource()) {
+		b.setVisible(false);
+		l.setVisible(false);
+		setMenu();
+		convert_CF();
+		}
+		if(fc==e.getSource()) {
+			ctf.setVisible(false);
+			convert_FC();
+		}
+		if(cf==e.getSource()) {
+			ftc.setVisible(false);
+			convert_CF();
+		}		
+	}
+}
